@@ -139,12 +139,20 @@ public struct CDPersistentStore<Key>: Sendable where Key: Equatable {
         let context = container.newBackgroundContext()
         let coreDataObject = T(context: context)
         
+        context.automaticallyMergesChangesFromParent = true
+        
         try self.checkHasErrorAttributes(coreDataObject: coreDataObject)
         
         let request = type.fetchRequest()
-        request.predicate = predicate
         
-        request.predicate = NSPredicate(format: "uuid != nil")
+        if let predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+                predicate,
+                NSPredicate(format: "uuid != nil")
+            ])
+        } else {
+            request.predicate = NSPredicate(format: "uuid != nil")
+        }
         
         return try context.fetch(request) as? [T]
         
