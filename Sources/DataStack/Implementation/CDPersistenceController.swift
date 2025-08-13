@@ -6,6 +6,7 @@
 //
 
 import CoreData
+
 #if DEBUG
     @preconcurrency import SwiftFake
 #endif
@@ -18,10 +19,10 @@ open class CDPersistenceController: @unchecked Sendable {
 
     /// O contêiner persistente do Core Data.
     public let container: NSPersistentContainer
-
-    /// Conjunto de registros falsos usado para visualização de prévia.
-    public let fakeRecords = FakeRecords()
-
+    #if DEBUG
+        /// Conjunto de registros falsos usado para visualização de prévia.
+        public let fakeRecords = FakeRecords()
+    #endif
     /// Cria uma instância do controlador para visualização de prévia.
     ///
     /// - Parameter configuration: A configuração do Core Data a ser utilizada.
