@@ -1,0 +1,15 @@
+{
+  "originHash" : "19ee344a05b9e422bc0ed2a054e4f1a4b8abe6c5c542f5e6bc35c0ddf0a1afe2",
+  "pins" : [
+    {
+      "identity" : "swiftfake",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ziminny/SwiftFake.git",
+      "state" : {
+        "revision" : "512d534f2aed07833b94cc5c9da6178881d20131",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
