@@ -5,9 +5,12 @@
 //  Created by Vagner Oliveira on 03/11/23.
 //
 
-import Foundation
 import CoreData
-import SwiftFake
+import Foundation
+
+#if DEBUG
+    import SwiftFake
+#endif
 
 /// Protocolo para configurar o Core Data.
 public protocol CDConfigurationProtocol where Self: Sendable {
@@ -22,5 +25,7 @@ public protocol CDConfigurationProtocol where Self: Sendable {
     ///   - context: O contexto de Core Data no qual os dados falsos serão gerados.
     ///
     /// - Throws: Uma exceção se ocorrer um erro durante a geração dos dados falsos.
-    func generateFakeModelInMemory(fake: FakeRecords, context: NSManagedObjectContext) throws
+    #if DEBUG
+        func generateFakeModelInMemory(fake: FakeRecords, context: NSManagedObjectContext) throws
+    #endif
 }
