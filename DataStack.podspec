@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '16.0'
   s.osx.deployment_target = '14.0'
   s.source_files          = 'Sources/**/*' 
-  #s.dependency 'SwiftFake'
+  s.dependency 'SwiftFake'
 
   s.test_spec 'Tests' do |test_spec|
     test_spec.source_files = 'Tests/**/*.{swift,h,m}'
