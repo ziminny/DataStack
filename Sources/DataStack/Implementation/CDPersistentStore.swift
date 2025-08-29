@@ -144,6 +144,7 @@ public struct CDPersistentStore<Key>: Sendable where Key: Equatable {
         try self.checkHasErrorAttributes(coreDataObject: coreDataObject)
         
         let request = type.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "timestamps", ascending: false)]
         
         if let predicate {
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
